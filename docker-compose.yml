@@ -1,0 +1,23 @@
+services:
+  db:
+    container_name: interview-db
+    image: mysql:8.0
+    command: "--default-authentication-plugin=mysql_native_password"
+    ports:
+      - "33063:3306"
+    environment:
+      MYSQL_DATABASE: interview_db
+      MYSQL_USER: interview
+      MYSQL_PASSWORD: interview
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_USER: root
+
+  project:
+    container_name: interview-be
+    ports:
+      - "81:80"
+    depends_on:
+      - db
+    build: .
+    volumes:
+      - .:/var/www/html
