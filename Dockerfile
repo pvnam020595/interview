@@ -29,9 +29,9 @@ RUN a2enmod rewrite
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
+COPY ./php.ini /etc/php/8.1/apache2/php.ini
 # Set working directory
 WORKDIR /var/www/html
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get install -y nodejs
-RUN npm install
+# RUN npm install
