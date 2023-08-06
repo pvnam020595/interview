@@ -16,9 +16,8 @@ class Product extends Model
      */
     protected $fillable = [
         'name',
-        'code',
         'price',
-        'store_id'
+        'category_id'
     ];
 
     /**
@@ -29,7 +28,7 @@ class Product extends Model
     protected $hidden = [
         
     ];
-    public function product() {
-        return $this->belongsTo(Store::class);
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 }

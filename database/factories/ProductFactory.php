@@ -22,11 +22,9 @@ class ProductFactory extends Factory
             //
             'name' => Str::random(5),
             'price' => rand(1, 10000000),
-            'code' => Str::random(5),
-            // 'store_id' => function () {
-            //     return factory(Store::class)->create()->id;
-            // },
-            'store_id' => ''
+            'category_id' => function() {
+                return factory(Category::class)->create()->id;
+            }
         ];
     }
 }

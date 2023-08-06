@@ -12,6 +12,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@nuintun/qrcode": "^3.3.5",
+        "jsbarcode": "^3.11.5",
         "pdf-lib": "^1.17.1"
     }
 }

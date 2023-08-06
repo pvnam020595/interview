@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Store;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
-class StoreSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,9 @@ class StoreSeeder extends Seeder
      */
     public function run()
     {
-        //
-        // Store::factory()->count(10)->create();
+
+        Category::factory(5)->has(
+            Product::factory()->count(1)
+        )->create();
     }
 }

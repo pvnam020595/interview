@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Product;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
- use App\Helpers\Helpers;
+use App\Helpers\Helpers;
+use App\Models\Category;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
+    //
+    
     public $helpers;
     function __construct(Helpers $helpers)
     {
@@ -15,17 +18,16 @@ class ProductController extends Controller
     }
     public function view(Request $request) {
         $category = $this->helpers->getCategory('');
-        return view('add-product', ['category' => $category]);
+        return view('add-category', ['category' => $category]);
     }
     public function add(Request $request) {
-      $price = $request->input('price');
-      $product_name = $request->input('product_name');
-      $category = $request->input('category');
+      $category_name = $request->input('category_name');
+      $category = empty($request->input('category')) ? 0 : $request->input('category');
       try {
-        $product = Product::create([
-            'name' => $product_name,
-            'price' => $price,
-            'category_id' => $category,
+        $category = Category::create([
+            'name' => $category_name,
+            'parent_id' => $category,
+            'status' => 1,
           ]);
         return redirect('/test4');
       } catch (\Throwable $th) {

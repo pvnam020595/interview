@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('store', function (Blueprint $table) {
+        Schema::create('category', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->string('address');
             $table->string('name');
+            $table->integer('parent_id');
             $table->boolean('status');
-            // $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store');
+        Schema::dropIfExists('category');
     }
 };

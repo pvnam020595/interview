@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->id();
-            $table->integer('store_id');
-            $table->string('code')->unique();
+            $table->integer('category_id');
             $table->string('name');
             $table->bigInteger('price');
-            // $table->foreign('store_id')->references('id')->on('store');
             $table->timestamps();
         });
     }
